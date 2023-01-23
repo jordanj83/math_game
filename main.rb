@@ -1,5 +1,6 @@
-require "./player"
-require "./question"
+require "./players.rb"
+require "./question.rb"
+require "./main.rb"
 
 player1 = Player.new
 player2 = Player.new
@@ -11,20 +12,17 @@ count = 0
 while player1.lives>0 && player2.lives>0
    if player == 1
     if count != 0
-      puts '----- NEW TURN -----'
     end
     question = Question.new
     puts "player 1: #{question.question}"
-    print ">"
     answer = gets.chomp.to_i
     if answer == question.answer
-      puts 'Player 1: YES! You are correct.'
-      puts "P1: #{player1.lives}/3 vs P2: #{player2.lives}/3"
+      puts 'Player 1: correct'
+      puts "P1 has #{player1.lives} remaining vs P2: has #{player2.lives} remaining "
       player = 2
       count +=1
     else
       player1.lives -=1
-      puts 'Player 1: Seriously? No!'
       puts "P1: #{player1.lives}/3 vs P2: #{player2.lives}/3"
       if player1.lives == 0
         break
@@ -44,14 +42,12 @@ while player1.lives>0 && player2.lives>0
     print ">"
     answer = gets.chomp.to_i
     if answer == question.answer
-      puts 'Player 2: YES! You are correct.'
-      puts "P1: #{player1.lives}/3 vs P2: #{player2.lives}/3"
+      puts "P1 has #{player1.lives} remaining vs P2: has #{player2.lives} remaining "
       player = 1
       count +=1
     else
       player2.lives -=1
-      puts 'Player 2: Seriously? No!'
-      puts "P1: #{player1.lives}/3 vs P2: #{player2.lives}/3"
+      puts "Player 1: #{player1.lives} Player 2: #{player2.lives}"
       if player2.lives == 0
         break
       end
@@ -65,13 +61,12 @@ while player1.lives>0 && player2.lives>0
 end
 
 if (player1.lives == 0)
-  puts "Player 2 wins with a score of #{player2.lives}/3"
-  puts '----- GAME OVER -----'
-  puts 'Good bye!'
+  puts "Player 2 wins #{player2.lives}/3"
+
+
 end
 if(player2.lives == 0)
-  puts "Player 1 wins with a score of #{player1.lives}/3"
-  puts '----- GAME OVER -----'
-  puts 'Good bye!'
+  puts "Player 1 wins #{player1.lives}/3"
+
 
 end
