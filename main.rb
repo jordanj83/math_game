@@ -63,12 +63,10 @@ end
 
 if (player1.lives == 0)
   puts "You are the lizard queen! #{player2.lives}/3"
-  puts '----- GAME OVER -----'
   puts 'Get lost!'
 end
 if(player2.lives == 0)
   puts "Welcome to the planet of the apes #{player1.lives}/3"
-  puts '----- GAME OVER -----'
   puts 'Sorry lady, shows over'
 
 end
